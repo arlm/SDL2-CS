@@ -89,6 +89,7 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="lib/*" Link="%(Filename)%(Extension)" LinkBase="lib" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="SDL2-CS.dll.config" />
     </ItemGroup>
     <Choose>
         <When Condition=" '$(Platform)' == 'x86'  ">
