@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
@@ -11,6 +11,76 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+        <IntermediateOutputPath>obj\x86\Debug</IntermediateOutputPath>
+        <DebugSymbols>false</DebugSymbols>
+        <DebugType>
+        </DebugType>
+        <OutputPath>bin\x86\Debug</OutputPath>
+        <DefineConstants>
+        </DefineConstants>
+        <NoWarn>
+        </NoWarn>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+        <IntermediateOutputPath>obj\x64\Debug</IntermediateOutputPath>
+        <DebugSymbols>false</DebugSymbols>
+        <DebugType>
+        </DebugType>
+        <OutputPath>bin\x64\Debug</OutputPath>
+        <DefineConstants>
+        </DefineConstants>
+        <NoWarn>
+        </NoWarn>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+        <IntermediateOutputPath>obj\x86\Release</IntermediateOutputPath>
+        <DebugType>
+        </DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\x86\Release</OutputPath>
+        <DefineConstants>
+        </DefineConstants>
+        <NoWarn>
+        </NoWarn>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+        <IntermediateOutputPath>obj\x64\Release</IntermediateOutputPath>
+        <DebugType>
+        </DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\x64\Release</OutputPath>
+        <DefineConstants>
+        </DefineConstants>
+        <NoWarn>
+        </NoWarn>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <IntermediateOutputPath>obj\Debug</IntermediateOutputPath>
+        <DebugSymbols>false</DebugSymbols>
+        <DebugType>
+        </DebugType>
+        <OutputPath>bin\Debug</OutputPath>
+        <DefineConstants>
+        </DefineConstants>
+        <NoWarn>
+        </NoWarn>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <NoStdLib>false</NoStdLib>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <IntermediateOutputPath>obj\Release</IntermediateOutputPath>
+        <DebugType>
+        </DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Release</OutputPath>
+        <DefineConstants>
+        </DefineConstants>
+        <NoWarn>
+        </NoWarn>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <NoStdLib>false</NoStdLib>
+    </PropertyGroup>
     <ItemGroup>
         <Compile Include="src\SDL2.cs" />
         <Compile Include="src\SDL2_image.cs" />
@@ -20,4 +90,16 @@
     <ItemGroup>
         <None Include="lib/*" Link="%(Filename)%(Extension)" LinkBase="lib" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
+    <Choose>
+        <When Condition=" '$(Platform)' == 'x86'  ">
+            <ItemGroup>
+                <None Include="lib/win32-x86/*" Link="%(Filename)%(Extension)" LinkBase="lib-win32-x86" CopyToOutputDirectory="PreserveNewest" />
+            </ItemGroup>
+        </When>
+        <When Condition=" '$(Platform)' == 'x64'  ">
+            <ItemGroup>
+                <None Include="lib/win32-x64/*" Link="%(Filename)%(Extension)" LinkBase="lib-win32-x64" CopyToOutputDirectory="PreserveNewest" />
+            </ItemGroup>
+        </When>
+    </Choose>
 </Project>
